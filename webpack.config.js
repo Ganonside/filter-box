@@ -2,11 +2,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    ReactBootstrap: "./src/main.js"
+    Filterbox: "./src/main.js"
   },
   output: {
     libraryTarget: "var",
-    library: "UC",
+    library: "FilterBox",
     path: './build',
     filename: "[name].js"
   },
