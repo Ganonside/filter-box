@@ -1,0 +1,30 @@
+{
+  "name": "react-bootstrap",
+  "version": "1.0.0",
+  "description": "out of the box react project",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack --progress --colors --watch",
+    "start": "webpack-dev-server --progress --colors",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.uc.edu/hornerjn/react-bootstrap.git"
+  },
+  "author": "hornerjn",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "6to5": "^2.12.6",
+    "6to5-loader": "^2.0.0",
+    "css-loader": "^0.9.1",
+    "less": "^2.2.0",
+    "less-loader": "^2.0.0",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.4.15",
+    "webpack-dev-server": "^1.7.0"
+  }
+}
