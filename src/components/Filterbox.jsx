@@ -7,14 +7,13 @@ var Selected = require('./Selected.jsx');
 var Filterbox = React.createClass({
 
   render() {
-    console.log(this.props.cursor);
 
     return (
       <div className="pull-left">
         <h1>Filter Box!</h1>
         <Filter classes={this.props.inputClasses} structure={this.props.structure} />
         <FilteredList classes={this.props.listClasses} structure={this.props.structure} filter={this.props.cursor.input} options={this.props.options} />
-        <Selected selected={this.props.cursor.selected} />
+        <Selected classes={this.props.selectedClasses} structure={this.props.structure} selectedValues={this.props.cursor.selected} />
       </div>
     );
   }

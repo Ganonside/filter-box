@@ -33,6 +33,10 @@ var Page = React.render(
     listClasses: {
       groupClasses: ['list-group'],
       itemClasses: ['list-group-item']
+    },
+    selectedClasses: {
+      labelClasses: ['label', 'label-default'],
+      iconClasses: ['glyphicon', 'glyphicon-remove']
     }
   }), document.getElementById('filterbox')
 );

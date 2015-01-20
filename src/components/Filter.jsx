@@ -23,7 +23,6 @@ var Filter = React.createClass({
     let input = evt.target.value;
     let cursor = this.props.structure.cursor(['filterbox', 'input']);
 
-
     cursor.update(() => {
       return Immutable.fromJS(input);
     });

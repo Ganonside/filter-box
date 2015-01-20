@@ -31,7 +31,6 @@ var FilteredList = React.createClass({
 
     return (
       <div>
-        <h2>{this.props.filter}</h2>
         <ul className={this.props.classes.groupClasses}>
           {options}
         </ul>
@@ -48,11 +47,10 @@ var FilteredList = React.createClass({
 
     cursor.update(() => {
       let selected = cursor.toJS();
-      console.log(cursor.toJS().indexOf(value) === -1);
+
       if(cursor.toJS().indexOf(value) === -1) {
         selected = selected.concat(value);
       }
-      console.log(selected);
 
       return Immutable.fromJS(selected);
     });
