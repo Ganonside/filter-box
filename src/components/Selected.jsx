@@ -32,9 +32,9 @@ var Selected = React.createClass({
 
   handleRemove(evt) {
     let removed = evt.target.innerHTML;
-    let cursor = this.props.structure.cursor(['filterbox', 'selected']).toJS();
+    let cursor = this.props.structure.cursor(this.props.structurePath.concat('selected')).toJS();
 
-    this.props.structure.cursor(['filterbox', 'selected']).update(() => {
+    this.props.structure.cursor(this.props.structurePath.concat('selected')).update(() => {
       return Immutable.fromJS(_.without(cursor, removed));
     });
   }

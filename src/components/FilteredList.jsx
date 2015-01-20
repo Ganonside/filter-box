@@ -51,7 +51,7 @@ var FilteredList = React.createClass({
 
   handleSelect(evt) {
 
-    let cursor = this.props.structure.cursor(['filterbox', 'selected']);
+    let cursor = this.props.structure.cursor(this.props.structurePath.concat('selected'));
 
     let value = evt.target.innerHTML;
     let selected = cursor.toJS();
