@@ -1,11 +1,40 @@
 var React = require('react');
+var Immutable = require('immutable');
+var Immstruct = require('immstruct')
 var _ = require('underscore');
 
 var Filter = require('./Filter.jsx');
 var FilteredList = require('./FilteredList.jsx');
 var Selected = require('./Selected.jsx');
 
+
+
 var Filterbox = React.createClass({
+
+  getDefaultProps() {
+    return {
+      options: [],
+      filterboxProps: {
+        classes: []
+      },
+      inputProps: {
+        classes: [],
+        placeholder: 'Filter'
+      },
+      listProps: {
+        classes: {
+          listClasses: [],
+          itemClasses: []
+        }
+      },
+      selectedProps: {
+        classes: {
+          labelClasses: [],
+          iconClasses: []
+        }
+      }
+    }
+  },
 
   render() {
     let classes = '';

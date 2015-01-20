@@ -1,8 +1,8 @@
 #Filterbox
 
-A customizable combobox that filters results.
+A customizable combobox that filters results based on user input.
 
-Uses [ImmutableJS](https://github.com/facebook/immutable-js) and
+Requires [ImmutableJS](https://github.com/facebook/immutable-js) and
 [Immstruct](https://github.com/omniscientjs/immstruct)
 
 ##Installation
@@ -15,59 +15,72 @@ var Immutable = require('immutable');
 var Immstruct = require('immstruct');
 var Filterbox = require('filterbox');
 
-var filterboxStruct = Immstruct('filterbox'); // Creates a new structure
+/**
+ * Creates a structure
+ */
+var filterboxStruct = Immstruct('filterbox');
+/**
+ * Initializes the data within the structure
+ */
 filterboxStruct.cursor(['filterbox']).update(function() {
-  /**
-   * Initializes the data within the structure
-   */
   return {
     input: '',
     selected: []
   };
 });
-
-var Example = React.createElement(Filterbox, {
-  structure: filterboxStruct,
-
-  cursor: filterboxStruct.cursor(['filterbox']).toJS(),
-
-  options: [],
-
-  filterboxProps: {
-    classes: []
-  },
-
-  inputProps: {
-    classes: [],
-    placeholder: ''
-  },
-
-  listProps: {
-    classes: {
-      listClasses: [],
-      itemClasses: []
-    }
-  },
-
-  selectedProps: {
-    classes: {
-      labelClasses: [],
-      iconClasses: []
-    }
-  }
+/**
+ * This makes the component re-render every time the structure changes ensuring
+ * that every child has the most recent data.
+ */
+filterboxStruct.on('swap', function() {
+  Example.setProps({
+    cursor: filteboxStruct.cursor(['filterbox']).toJS()
+  });
 });
+
+var Example = React.render(
+  React.createElement(Filterbox, {
+    structure: filterboxStruct,
+
+    cursor: filterboxStruct.cursor(['filterbox']).toJS(),
+
+    options: [],
+
+    filterboxProps: {
+      classes: []
+    },
+
+    inputProps: {
+      classes: [],
+      placeholder: ''
+    },
+
+    listProps: {
+      classes: {
+        listClasses: [],
+        itemClasses: []
+      }
+    },
+
+    selectedProps: {
+      classes: {
+        labelClasses: [],
+        iconClasses: []
+      }
+    }
+  }), document.body);
 ```
 
 ###structure
 An immutable structure used to facilitate communication between components and
 allow access to data from outside the filterbox component.
 
-__Note:__ If not passed in it will be created locally.
+__Note:__ This prop is required.
 
 ###cursor
 The actual JS data represented by `structure`.
 
-__Note:__ If not passed in it will be created locally.
+__Note:__ This prop is required.
 
 ###options
 An array of options for the filterbox to search and select from.
