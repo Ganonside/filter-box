@@ -6,12 +6,12 @@ var Selected = React.createClass({
 
   render() {
     let labelClasses = '';
-    this.props.classes.labelClasses.map(className => {
+    _.each(this.props.classes.labelClasses, className => {
       labelClasses += className+' ';
     });
 
     let iconClasses = '';
-    this.props.classes.iconClasses.map(className => {
+    _.each(this.props.classes.iconClasses, className => {
       iconClasses += className+' ';
     });
 

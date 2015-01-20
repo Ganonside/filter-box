@@ -6,37 +6,46 @@ var Filterbox = require('./components/Filterbox.jsx');
 var Options = require('./states.js');
 
 window.React = React;
-console.log('react running');
 
-var inputStruct = Immstruct('filterbox');
+var filterboxStruct = Immstruct('filterbox');
 
-inputStruct.cursor(['filterbox']).update(() => {
+filterboxStruct.cursor(['filterbox']).update(() => {
   return Immutable.fromJS({
     input: '',
     selected: []
   });
 });
 
-inputStruct.on('swap', () => {
+filterboxStruct.on('swap', () => {
   Page.setProps({
-    cursor: inputStruct.cursor(['filterbox']).toJS()
+    cursor: filterboxStruct.cursor(['filterbox']).toJS()
   });
 });
 
 var Page = React.render(
   React.createElement(Filterbox, {
     className: 'Filterbox',
-    structure: inputStruct,
-    cursor: inputStruct.cursor(['filterbox']).toJS(),
+    structure: filterboxStruct,
+    cursor: filterboxStruct.cursor(['filterbox']).toJS(),
     options: Options,
-    inputClasses: ['form-control'],
-    listClasses: {
-      groupClasses: ['list-group'],
-      itemClasses: ['list-group-item']
+    filterboxProps: {
+      classes: ['pull-left']
     },
-    selectedClasses: {
-      labelClasses: ['label', 'label-default'],
-      iconClasses: ['glyphicon', 'glyphicon-remove']
+    inputProps: {
+      classes: ['form-control'],
+      placeholder: 'filter'
+    },
+    listProps: {
+      classes: {
+        listClasses: ['list-group'],
+        itemClasses: ['list-group-item']
+      }
+    },
+    selectedProps: {
+      classes: {
+        labelClasses: ['label', 'label-default'],
+        iconClasses: ['glyphicon', 'glyphicon-remove']
+      }
     }
   }), document.getElementById('filterbox')
 );

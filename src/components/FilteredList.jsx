@@ -1,5 +1,6 @@
 var React = require('react');
 var Immutable = require('immutable');
+var _ = require('underscore');
 
 var FilteredList = React.createClass({
 
@@ -9,20 +10,30 @@ var FilteredList = React.createClass({
 
   getDefaultProps() {
     return {
-      filter: ""
+      filter: ''
     };
   },
 
-  render: function() {
+  render() {
+    let listClasses = '';
+    _.each(this.props.classes.listClasses, className => {
+      listClasses += className+' ';
+    });
+
+    let itemClasses = '';
+    _.each(this.props.classes.itemClasses, className => {
+      itemClasses += className+' ';
+    });
+
     let filter = this.props.filter.toLowerCase();
 
-    let options = this.props.options.map(option => {
+    let options = _.map(this.props.options, option => {
       let name = option.name.toLowerCase();
       let id = option.id.toLowerCase();
 
       if(name.indexOf(filter) > -1 || id.indexOf(filter) > -1) {
         return (
-          <li key={option.id} val={option.name} className={this.props.classes.itemClasses} onClick={this.handleSelect}>
+          <li key={option.id} val={option.name} className={itemClasses} onClick={this.handleSelect}>
             {option.name}
           </li>
         );
@@ -31,7 +42,7 @@ var FilteredList = React.createClass({
 
     return (
       <div>
-        <ul className={this.props.classes.groupClasses}>
+        <ul className={listClasses}>
           {options}
         </ul>
       </div>

@@ -5,7 +5,7 @@ var Filter = React.createClass({
 
   getInitialState() {
     return {
-      value: ""
+      value: ''
     };
   },
 
@@ -13,7 +13,7 @@ var Filter = React.createClass({
     return (
       <input type="text"
           className={this.props.classes}
-          placeholder="filterbox"
+          placeholder={this.props.placeholder}
           value={this.state.value}
           onChange={this.handleInput} />
     );
