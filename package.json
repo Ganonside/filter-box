@@ -2,7 +2,7 @@
   "name": "filterbox",
   "version": "1.0.0",
   "description": "out of the box react project",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "build": "webpack --progress --colors --watch",
     "start": "webpack-dev-server --progress --colors",
