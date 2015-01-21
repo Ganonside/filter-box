@@ -44,9 +44,9 @@ var Filterbox = React.createClass({
 
     return (
       <div className={classes}>
-        <Selected classes={this.props.selectedProps.classes} structure={this.props.structure} structurePath={this.props.structurePath} selectedValues={this.props.cursor.selected} />
-        <Filter classes={this.props.inputProps.classes} structure={this.props.structure} structurePath={this.props.structurePath} placeholder={this.props.inputProps.placeholder} />
-        <FilteredList classes={this.props.listProps.classes} structure={this.props.structure} structurePath={this.props.structurePath} filter={this.props.cursor.input} options={this.props.options} />
+        <Selected classes={this.props.selectedProps.classes} structure={this.props.structure} selectedValues={this.props.cursor.selected} />
+        <Filter classes={this.props.inputProps.classes} structure={this.props.structure} placeholder={this.props.inputProps.placeholder} />
+        <FilteredList classes={this.props.listProps.classes} structure={this.props.structure} filter={this.props.cursor.input} options={this.props.options} />
       </div>
     );
   }

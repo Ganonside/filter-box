@@ -22,14 +22,11 @@ filterboxStruct.on('swap', () => {
   });
 });
 
-let pathToFilterbox = ['filterbox'];
-
 var Page = React.render(
   React.createElement(Filterbox, {
     className: 'Filterbox',
     structure: filterboxStruct,
-    cursor: filterboxStruct.cursor(pathToFilterbox).toJS(),
-    structurePath: pathToFilterbox,
+    cursor: filterboxStruct.cursor(['filterbox']).toJS(),
     options: Options,
     filterboxProps: {
       classes: ['pull-left']

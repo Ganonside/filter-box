@@ -15,7 +15,7 @@ var Selected = React.createClass({
       iconClasses += className+' ';
     });
 
-    let selected = this.props.selectedValues.map(value => {
+    let selected = _.map(this.props.selectedValues, value => {
       return (
         <div key={value} className={labelClasses}>
           <span className={iconClasses} onClick={this.handleRemove}>{value}</span>
@@ -32,9 +32,9 @@ var Selected = React.createClass({
 
   handleRemove(evt) {
     let removed = evt.target.innerHTML;
-    let cursor = this.props.structure.cursor(this.props.structurePath.concat('selected')).toJS();
+    let cursor = this.props.structure.cursor(['filterbox', 'selected']).toJS();
 
-    this.props.structure.cursor(this.props.structurePath.concat('selected')).update(() => {
+    this.props.structure.cursor(['filterbox', 'selected']).update(() => {
       return Immutable.fromJS(_.without(cursor, removed));
     });
   }
