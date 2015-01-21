@@ -1,5 +1,6 @@
 var React = require('react');
 var Immutable = require('immutable');
+var _ = require('underscore');
 
 var Filter = React.createClass({
 
@@ -10,13 +11,20 @@ var Filter = React.createClass({
   },
 
   render() {
-    return (
-      <input type="text"
-          className={this.props.classes}
-          placeholder={this.props.placeholder}
-          value={this.state.value}
-          onChange={this.handleInput} />
-    );
+    let customProps = this.props.customProps;
+
+    let classNames = '';
+    _.each(this.props.classes, className => {
+      classNames += className + ' ';
+    });
+
+    let extractedProps = { className: classNames };
+    let otherProps = _.omit(customProps, 'classes');
+    let localProps = { type: 'text', value: this.state.value, onChange: this.handleInput };
+
+    let props = _.extend(extractedProps, otherProps, localProps);
+
+    return React.createElement('input', props);
   },
 
   handleInput(evt) {

@@ -33,12 +33,19 @@ var Page = React.render(
     },
     inputProps: {
       classes: ['form-control'],
-      placeholder: 'filter'
+      props: {
+        id: 'filterboxInput',
+        placeholder: 'filter'
+      }
     },
     listProps: {
       classes: {
         listClasses: ['list-group'],
         itemClasses: ['list-group-item']
+      },
+      props: {
+        customListProps: {},
+        customItemProps: {}
       }
     },
     selectedProps: {

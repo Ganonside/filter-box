@@ -18,6 +18,7 @@ var Filterbox = React.createClass({
         classes: []
       },
       inputProps: {
+        type: 'text',
         classes: [],
         placeholder: 'Filter'
       },
@@ -42,11 +43,14 @@ var Filterbox = React.createClass({
       classes += className+' ';
     });
 
+    let filteredList = this.props.structure.cursor(['filterbox', 'input']).deref() === '' ?
+      '' : <FilteredList classes={this.props.listProps.classes} structure={this.props.structure} filter={this.props.cursor.input} options={this.props.options} customProps={this.props.listProps.props} />;
+
     return (
       <div className={classes}>
         <Selected classes={this.props.selectedProps.classes} structure={this.props.structure} selectedValues={this.props.cursor.selected} />
-        <Filter classes={this.props.inputProps.classes} structure={this.props.structure} placeholder={this.props.inputProps.placeholder} />
-        <FilteredList classes={this.props.listProps.classes} structure={this.props.structure} filter={this.props.cursor.input} options={this.props.options} />
+        <Filter classes={this.props.inputProps.classes} structure={this.props.structure} customProps={this.props.inputProps.props} />
+        {filteredList}
       </div>
     );
   }

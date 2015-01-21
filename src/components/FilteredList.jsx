@@ -2,6 +2,8 @@ var React = require('react');
 var Immutable = require('immutable');
 var _ = require('underscore');
 
+require('../styles/FilteredListStyles.less');
+
 var FilteredList = React.createClass({
 
   propTypes: {
@@ -20,10 +22,14 @@ var FilteredList = React.createClass({
       listClasses += className+' ';
     });
 
+    let listProps = this.props.customProps.customListProps;
+
     let itemClasses = '';
     _.each(this.props.classes.itemClasses, className => {
       itemClasses += className+' ';
     });
+
+    let itemProps = this.props.customProps.customItemProps;
 
     let filter = this.props.filter.toLowerCase();
 
@@ -32,20 +38,20 @@ var FilteredList = React.createClass({
       let id = option.id.toLowerCase();
 
       if(name.indexOf(filter) > -1 || id.indexOf(filter) > -1) {
-        return (
-          <li key={option.id} val={option.name} className={itemClasses} onClick={this.handleSelect}>
-            {option.name}
-          </li>
-        );
+        return React.createElement('li', _.extend({
+          className: itemClasses,
+          key: option.id,
+          val: option.name,
+          onClick: this.handleSelect
+        }, itemProps), option.name);
       }
     });
 
-    return (
-      <div>
-        <ul className={listClasses}>
-          {options}
-        </ul>
-      </div>
+    return React.createElement('div', {
+        className: 'FilteredList'
+      }, React.createElement('ul', _.extend({
+        className: listClasses
+      }, listProps), options)
     );
   },
 
