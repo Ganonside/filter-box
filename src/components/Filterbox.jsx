@@ -7,7 +7,7 @@ var Filter = require('./Filter.jsx');
 var FilteredList = require('./FilteredList.jsx');
 var Selected = require('./Selected.jsx');
 
-
+require('../styles/FilterboxStyles.less');
 
 var Filterbox = React.createClass({
 

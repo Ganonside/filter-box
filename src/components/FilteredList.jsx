@@ -2,7 +2,7 @@ var React = require('react');
 var Immutable = require('immutable');
 var _ = require('underscore');
 
-require('../styles/FilteredListStyles.less');
+require('../styles/FilterboxStyles.less');
 
 var FilteredList = React.createClass({
 

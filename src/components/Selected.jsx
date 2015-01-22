@@ -17,21 +17,23 @@ var Selected = React.createClass({
 
     let selected = _.map(this.props.selectedValues, value => {
       return (
-        <div key={value} className={labelClasses}>
-          <span className={iconClasses} onClick={this.handleRemove}>{value}</span>
+        <div key={'label-'+value} className={labelClasses} onClick={this.handleRemove}>
+          <span className={iconClasses}></span> {value}
         </div>
       );
     });
 
     return (
-      <div>
+      <div className="Selected">
         {selected}
       </div>
     );
   },
 
-  handleRemove(evt) {
-    let removed = evt.target.innerHTML;
+  handleRemove(evt, marker) {
+    let regex = /[\.0-9]*\$label-(\w+)/;
+    let removed = regex.exec(marker)[1];
+
     let cursor = this.props.structure.cursor(['filterbox', 'selected']).toJS();
 
     this.props.structure.cursor(['filterbox', 'selected']).update(() => {
