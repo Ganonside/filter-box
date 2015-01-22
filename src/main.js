@@ -7,7 +7,7 @@ var Options = require('./states.js');
 
 window.React = React;
 
-var filterboxStruct = Immstruct('filterbox');
+var filterboxStruct = Immstruct.withHistory('filterbox');
 
 filterboxStruct.cursor(['filterbox']).update(() => {
   return Immutable.fromJS({

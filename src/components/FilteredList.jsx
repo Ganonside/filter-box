@@ -48,7 +48,8 @@ var FilteredList = React.createClass({
     });
 
     return React.createElement('div', {
-        className: 'FilteredList'
+        className: 'FilteredList',
+        onFocus: this.handleFocus
       }, React.createElement('ul', _.extend({
         className: listClasses
       }, listProps), options)
@@ -70,6 +71,8 @@ var FilteredList = React.createClass({
 
       return Immutable.fromJS(selected);
     });
+
+    $('div.FilteredList').hide();
   }
 
 });

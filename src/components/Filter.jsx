@@ -20,9 +20,14 @@ var Filter = React.createClass({
 
     let extractedProps = { className: classNames };
     let otherProps = _.omit(customProps, 'classes');
-    let localProps = { type: 'text', value: this.state.value, onChange: this.handleInput };
+    let localProps = { type: 'text', value: this.state.value };
+    let eventHandlers = {
+      onChange: this.handleInput,
+      onFocus: this.handleFocus,
+      onBlur: this.handleBlur
+    };
 
-    let props = _.extend(extractedProps, otherProps, localProps);
+    let props = _.extend(extractedProps, otherProps, localProps, eventHandlers);
 
     return React.createElement('input', props);
   },
@@ -38,6 +43,10 @@ var Filter = React.createClass({
     this.setState({
       value: input
     });
+  },
+
+  handleFocus(evt) {
+    $('div.FilteredList').show();
   }
 
 });
